@@ -10,10 +10,12 @@ RUN CGO_ENABLED=0 go build -o main main.go
 
 
 FROM alpine
+RUN adduser -D app
+USER app
 WORKDIR /
 ENV PORT 8000
-COPY --from=builder /go/main /main
-USER app
+COPY --from=builder --chown=app:app /go/main /main
+
 ENTRYPOINT ["/main"]
 EOF
 )
