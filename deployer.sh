@@ -13,6 +13,7 @@ FROM alpine
 WORKDIR /
 ENV PORT 8000
 COPY --from=builder /go/main /main
+USER app
 ENTRYPOINT ["/main"]
 EOF
 )
