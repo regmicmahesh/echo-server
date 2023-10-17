@@ -20,7 +20,7 @@ ENTRYPOINT ["/main"]
 EOF
 )
 
-for i in 8080 3000 ; do
+for i in 8080 3000 80 1337; do
     echo "Building for port $i"
     echo "$MAIN_DOCKERFILE" | sed "s/8000/$i/" > Dockerfile
     docker build -t "regmicmahesh/echo-server:$i" .
